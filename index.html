@@ -78,14 +78,25 @@
 
   <!-- ============ PRELOADER ============ -->
   <div id="preloader" aria-hidden="true">
+    <div class="preloader__grid"></div>
     <div class="preloader__glow"></div>
     <div class="preloader__mark">
-      <img src="assets/img/meic-logo-light.png" alt="" class="preloader__logo">
       <div class="preloader__ring"></div>
+      <svg class="preloader__ring-progress" viewBox="0 0 120 120">
+        <circle class="preloader__ring-track" cx="60" cy="60" r="52"/>
+        <circle class="preloader__ring-fill" id="preloaderRing" cx="60" cy="60" r="52"/>
+      </svg>
+      <img src="assets/img/meic-logo-light.png" alt="" class="preloader__logo">
     </div>
-    <p class="preloader__tagline">Manejamos tu Energía</p>
+    <div class="preloader__status">
+      <p class="preloader__tagline">Manejamos tu Energía</p>
+      <span class="preloader__percent" id="preloaderPercent">0<small>%</small></span>
+    </div>
     <div class="preloader__bar"><span id="preloaderFill"></span></div>
   </div>
+
+  <!-- ============ SCROLL PROGRESS ============ -->
+  <div class="scroll-progress" aria-hidden="true"><span id="scrollProgressFill"></span></div>
 
   <!-- ============ HEADER / NAV ============ -->
   <header class="navbar" id="navbar">
@@ -132,14 +143,19 @@
         <div class="hero__grid-pattern"></div>
       </div>
 
+      <canvas class="hero__particles" id="heroParticles" aria-hidden="true"></canvas>
+      <div class="hero__spotlight" id="heroSpotlight" aria-hidden="true"></div>
+
       <div class="container hero__content">
         <p class="eyebrow reveal" data-reveal>
           <svg class="icon icon--sm" width="14" height="14"><use href="#i-bolt"/></svg>
           MEIC · Mantenimiento Electromecánico Industrial
         </p>
-        <h1 class="hero__title reveal" data-reveal data-delay="80">
-          Energía que no se detiene.<br>
-          <span class="text-gradient">Operación que no falla.</span>
+        <h1 class="hero__title reveal" data-reveal data-delay="80" aria-label="Energía que no se detiene. Operación confiable.">
+          <span aria-hidden="true">
+            <span class="hero__title-lead">Energía que no se detiene.</span><br>
+            Operación <span class="text-gradient" id="heroType">confiable</span><span class="hero__caret"></span>
+          </span>
         </h1>
         <p class="hero__subtitle reveal" data-reveal data-delay="160">
           Ingeniería eléctrica, mantenimiento electromecánico y comercialización de refacciones y maquinaria
