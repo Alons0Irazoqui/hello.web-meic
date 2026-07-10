@@ -399,6 +399,40 @@
     update();
   })();
 
+  /* ---------- Parallax de fondos "fixed" (reemplazo real para mobile) ----------
+     background-attachment:fixed no funciona en navegadores móviles (iOS Safari lo
+     ignora, Android Chrome lo hace con jank), por eso antes solo se veía en desktop.
+     Esto anima con transform la imagen real (antes invisible) dentro de cada
+     sección, lo que sí funciona igual en touch que con mouse. ---------- */
+  (function fixedBgParallax() {
+    if (reducedMotion) return;
+
+    var targets = [
+      { section: document.querySelector('.hero'), img: document.querySelector('.hero__bg-img'), factor: 0.16 },
+      { section: document.querySelector('.renewables'), img: document.querySelector('.renewables__img'), factor: 0.16 },
+      { section: document.querySelector('.cta-banner'), img: document.querySelector('.cta-banner__img'), factor: 0.16 }
+    ].filter(function (t) { return t.section && t.img; });
+    if (!targets.length) return;
+
+    var ticking = false;
+    function update() {
+      var vh = window.innerHeight;
+      var clampRange = vh * 0.75;
+      targets.forEach(function (t) {
+        var rect = t.section.getBoundingClientRect();
+        if (rect.bottom < 0 || rect.top > vh) return;
+        var top = Math.max(-clampRange, Math.min(clampRange, rect.top));
+        t.img.style.transform = 'translate3d(0, ' + (-top * t.factor).toFixed(1) + 'px, 0)';
+      });
+      ticking = false;
+    }
+    window.addEventListener('scroll', function () {
+      if (!ticking) { requestAnimationFrame(update); ticking = true; }
+    }, { passive: true });
+    window.addEventListener('resize', update);
+    update();
+  })();
+
   /* ---------- Partículas ligeras reutilizables para secciones oscuras ---------- */
   function lightParticles(canvasId, containerSelector, options) {
     var canvas = document.getElementById(canvasId);

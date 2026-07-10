@@ -114,16 +114,16 @@ svg [fill]:not([fill="none"]) { fill: currentColor; }
   background-image: url('https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1600&q=60');
   background-size: cover; background-position: center;
   filter: grayscale(0.2) saturate(1.25) brightness(1.02) contrast(1.05);
-  opacity: 0.4;
+  opacity: 0.5;
   animation: ambientZoom 22s ease-in-out infinite alternate;
 }
 .section::after {
   content: ''; position: absolute; inset: -12% -12%; z-index: -1; pointer-events: none;
   background:
-    radial-gradient(620px circle at 8% 6%, rgba(20, 137, 201, 0.32), transparent 58%),
-    radial-gradient(560px circle at 94% 18%, rgba(91, 196, 234, 0.24), transparent 55%),
-    radial-gradient(680px circle at 50% 100%, rgba(61, 209, 242, 0.22), transparent 60%),
-    linear-gradient(180deg, rgba(246, 248, 251, 0.82) 0%, rgba(246, 248, 251, 0.68) 32%, rgba(246, 248, 251, 0.4) 100%);
+    radial-gradient(620px circle at 8% 6%, rgba(20, 137, 201, 0.3), transparent 58%),
+    radial-gradient(560px circle at 94% 18%, rgba(91, 196, 234, 0.22), transparent 55%),
+    radial-gradient(680px circle at 50% 100%, rgba(61, 209, 242, 0.2), transparent 60%),
+    linear-gradient(180deg, rgba(246, 248, 251, 0.62) 0%, rgba(246, 248, 251, 0.48) 32%, rgba(246, 248, 251, 0.28) 100%);
   animation: ambientDrift 18s ease-in-out infinite alternate;
 }
 .section--alt { background: var(--bg-light-alt); }
@@ -132,10 +132,10 @@ svg [fill]:not([fill="none"]) { fill: currentColor; }
 }
 .section--alt::after {
   background:
-    radial-gradient(620px circle at 92% 4%, rgba(11, 114, 190, 0.32), transparent 58%),
-    radial-gradient(560px circle at 4% 22%, rgba(31, 163, 214, 0.24), transparent 55%),
-    radial-gradient(680px circle at 50% 100%, rgba(91, 196, 234, 0.2), transparent 60%),
-    linear-gradient(180deg, rgba(238, 242, 247, 0.82) 0%, rgba(238, 242, 247, 0.68) 32%, rgba(238, 242, 247, 0.4) 100%);
+    radial-gradient(620px circle at 92% 4%, rgba(11, 114, 190, 0.3), transparent 58%),
+    radial-gradient(560px circle at 4% 22%, rgba(31, 163, 214, 0.22), transparent 55%),
+    radial-gradient(680px circle at 50% 100%, rgba(91, 196, 234, 0.18), transparent 60%),
+    linear-gradient(180deg, rgba(238, 242, 247, 0.62) 0%, rgba(238, 242, 247, 0.48) 32%, rgba(238, 242, 247, 0.28) 100%);
 }
 @keyframes ambientDrift {
   0% { transform: translate(0, 0) scale(1); }
@@ -340,7 +340,7 @@ body.is-loaded #preloader { opacity: 0; visibility: hidden; pointer-events: none
   background-image: url('https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&w=1920&q=80');
   background-size: cover; background-position: center 65%; background-attachment: fixed;
 }
-.hero__bg-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; }
+.hero__bg-img { position: absolute; top: -30%; left: 0; width: 100%; height: 160%; object-fit: cover; will-change: transform; }
 @keyframes heroZoom { from { transform: scale(1); } to { transform: scale(1.09); } }
 
 .hero__overlay {
@@ -524,7 +524,7 @@ body.is-loaded #preloader { opacity: 0; visibility: hidden; pointer-events: none
   background-size: cover; background-position: center; background-attachment: fixed;
   box-shadow: inset 0 1px 0 rgba(61, 209, 242, 0.4);
 }
-.renewables__img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; }
+.renewables__img { position: absolute; top: -30%; left: 0; width: 100%; height: 160%; object-fit: cover; will-change: transform; }
 .renewables__overlay { position: absolute; inset: 0; background: linear-gradient(120deg, rgba(6,11,20,0.92) 20%, rgba(10,95,160,0.75) 75%); }
 .renewables__content { position: relative; max-width: 620px; padding-block: 5rem; color: var(--white); }
 .renewables__content svg { color: var(--cyan-400); margin-bottom: 1.25rem; }
@@ -568,7 +568,7 @@ body.is-loaded #preloader { opacity: 0; visibility: hidden; pointer-events: none
   background-size: cover; background-position: center; background-attachment: fixed;
   box-shadow: inset 0 1px 0 rgba(61, 209, 242, 0.4);
 }
-.cta-banner__img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; }
+.cta-banner__img { position: absolute; top: -30%; left: 0; width: 100%; height: 160%; object-fit: cover; will-change: transform; }
 .cta-banner__overlay { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(6,11,20,0.88) 0%, rgba(10,18,32,0.94) 100%); }
 .cta-banner__content { position: relative; max-width: 640px; padding-block: 4.5rem; color: var(--white); margin-inline: auto; }
 .cta-banner__content h2 { color: var(--white); font-size: var(--fs-h2); }
